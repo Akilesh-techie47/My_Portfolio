@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akilesh Dhanabalan — AI Full-Stack &amp; Android Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Bright Sunlit Forest Base Palette */
+      --bg: #faf9f5;             /* Warm Sunbleached Sand / Linen */
+      --bg-canopy: #f3f0e6;      /* Dappled Shade Glade Gray-Green */
+      --panel: #ffffff;          /* Crisp Clear Morning Light Pane */
+      --panel-leaf: #f7f9f6;     /* Mist-tinted Leaf Underbelly */
+      
+      /* Vivid Autumnal & Organic Contrast Elements */
+      --forest-deep: #1b4332;    /* Shadowed Ancient Timber Green */
+      --forest-leaf: #2d6a4f;    /* High-contrast Spruce Needle */
+      --autumn-red: #d94026;     /* Fiery Rowan Berry / Autumn Maple Red */
+      --sun-gold: #f5b041;       /* Golden Hour Sunbeam / Canopy Amber */
+      --moss-light: #d8f3dc;     /* Velvet Wet Sphagnum Moss */
+      
+      /* Type & Structural Lines */
+      --ink: #1c2321;            /* Deep Charcoal Bark */
+      --ink-mist: #4a5753;       /* Balanced High-Contrast Forest Haze */
+      --line: #d8d2bd;           /* Reinforced Lichen Twig Ring */
+      
+      /* Architectural Curves */
+      --radius-organic: 24px 4px 24px 4px;
+      --radius-standard: 12px;
+      
+      --display: 'Plus Jakarta Sans', sans-serif;
+      --mono: 'Space Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      background-image: 
+        radial-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(245, 176, 65, 0.04) 0%, transparent 800px);
+      background-size: 32px 32px, 100% 100%;
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: 16px; /* Increased base font size */
+      line-height: 1.7;
+      overflow-x: hidden;
+      perspective: 1400px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--autumn-red); color: #fff; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ---------- HIGHLIGHT STYLES ---------- */
+    .highlight-badge {
+      background: linear-gradient(135deg, var(--autumn-red), #b82d14);
+      color: #ffffff !important;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      font-family: var(--mono);
+      font-size: 12px !important;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(217, 64, 38, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .highlight-text-web {
+      color: var(--forest-deep);
+      font-weight: 700;
+      position: relative;
+      background: linear-gradient(180deg, transparent 65%, var(--moss-light) 65%);
+    }
+
+    .highlight-text-android {
+      color: var(--forest-deep);
+      font-weight: 700;
+      position: relative;
+      background: linear-gradient(180deg, transparent 65%, rgba(245, 176, 65, 0.25) 65%);
+    }
+
+    /* ---------- TYPOGRAPHY ---------- */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--autumn-red);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .eyebrow::before {
+      content: "🍁";
+      font-size: 14px;
+    }
+
+    h1, h2, h3 {
+      font-weight: 800;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+      color: var(--forest-deep);
+    }
+    h1 { font-size: clamp(42px, 6.5vw, 68px); }
+    h2 { font-size: clamp(32px, 4.5vw, 44px); }
+    h3 { font-size: clamp(22px, 3vw, 26px); }
+
+    /* ---------- NAVIGATION ---------- */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250, 249, 245, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px dashed var(--line);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 32px; max-width: 1200px; margin: 0 auto;
+    }
+    .nav-mark {
+      font-weight: 800; font-size: 22px;
+      display: flex; align-items: center; gap: 8px;
+      color: var(--forest-deep);
+    }
+    .nav-mark .seed {
+      width: 14px; height: 14px; background: var(--sun-gold);
+      border-radius: var(--radius-organic); display: inline-block;
+      transform: rotate(45deg);
+    }
+    .nav-links {
+      display: flex; gap: 40px; list-style: none;
+      font-size: 16px; font-weight: 600;
+    }
+    .nav-links a {
+      color: var(--ink-mist); transition: color .25s, transform .2s;
+      position: relative; display: inline-block;
+    }
+    .nav-links a:hover { color: var(--forest-leaf); transform: translateY(-1px); }
+    .nav-links a:hover::after { transform: translateX(-50%) scale(1.5); }
+    .nav-links a::after {
+      content: "•"; position: absolute; bottom: -12px; left: 50%;
+      transform: translateX(-50%) scale(0); color: var(--autumn-red);
+      transition: transform 0.2s ease;
+    }
+    
+    .nav-cta {
+      font-size: 14px; font-weight: 700;
+      border: 2px solid var(--forest-deep); color: var(--forest-deep);
+      padding: 10px 20px; border-radius: var(--radius-organic);
+      text-transform: uppercase; letter-spacing: 0.05em;
+      transition: all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .nav-cta:hover { 
+      background: var(--forest-deep); color: #fff; 
+      box-shadow: -4px 4px 0px var(--sun-gold);
+      transform: translate(2px, -2px);
+    }
+    .nav-toggle { display: none; background: none; border: 2px solid var(--line); padding: 8px 16px; font-weight: 700; cursor: pointer; border-radius: 6px; }
+
+    @media (max-width: 992px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+    }
+
+    /* ---------- HERO SECTION ---------- */
+    .hero { padding: 80px 0 50px; }
+    .canopy-lens-wrapper {
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out;
+    }
+    .titleblock {
+      border: 3px solid var(--forest-deep);
+      background: var(--panel);
+      border-radius: var(--radius-organic);
+      overflow: hidden;
+      box-shadow: -16px 16px 0px var(--line), -32px 32px 0px rgba(45, 106, 79, 0.03);
+      transform-style: preserve-3d;
+    }
+    .titleblock-main {
+      padding: 64px 48px;
+      border-bottom: 3px solid var(--forest-deep);
+    }
+    .hero .role-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .hero p.tagline {
+      max-width: 840px;
+      color: var(--ink-mist);
+      margin-top: 24px;
+      font-size: 19px;
+      line-height: 1.7;
+    }
+    .hero-actions { margin-top: 40px; display: flex; gap: 20px; flex-wrap: wrap; }
+    
+    .btn {
+      font-size: 16px; font-weight: 700;
+      padding: 14px 32px; border-radius: var(--radius-organic);
+      display: inline-flex; align-items: center; gap: 12px;
+      transition: all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .btn-primary { 
+      background: var(--autumn-red); color: #fff;
+      box-shadow: -4px 4px 0px var(--forest-deep);
+    }
+    .btn-primary:hover {
+      transform: translate(3px, -3px);
+      box-shadow: -8px 8px 0px var(--forest-deep);
+    }
+    .btn-ghost { 
+      border: 2px solid var(--line); color: var(--forest-deep); 
+      background: transparent;
+    }
+    .btn-ghost:hover {
+      border-color: var(--forest-deep);
+      background: rgba(245, 176, 65, 0.08);
+    }
+
+    .titleblock-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      background: var(--panel-leaf);
+    }
+    .titleblock-strip div { padding: 24px 28px; border-right: 2px solid var(--line); }
+    .titleblock-strip div:last-child { border-right: none; }
+    .titleblock-strip .k { font-family: var(--mono); color: var(--ink-mist); font-size: 12px; text-transform: uppercase; font-weight: 700; margin-bottom: 6px;}
+    .titleblock-strip .v { color: var(--forest-deep); font-size: 16px; font-weight: 700; }
+
+    @media (max-width: 768px) {
+      .titleblock-main { padding: 36px 24px; }
+      .titleblock-strip { grid-template-columns: repeat(2, 1fr); }
+      .titleblock-strip div:nth-child(2) { border-right: none; }
+    }
+
+    /* ---------- ROOTS / ABOUT ---------- */
+    section { padding: 100px 0; }
+    .section-head { margin-bottom: 48px; }
+    .section-head h2 { margin-top: 8px; }
+
+    .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; }
+    .about-grid p { color: var(--ink-mist); font-size: 18px; margin-bottom: 20px; }
+    
+    .biophilic-stats {
+      background: var(--forest-deep); color: #fff;
+      padding: 40px; border-radius: var(--radius-organic);
+      display: flex; flex-direction: column; gap: 32px;
+      box-shadow: -8px 8px 0px var(--sun-gold);
+    }
+    .stat-item .num { font-size: 44px; font-weight: 800; color: var(--sun-gold); line-height: 1; }
+    .stat-item .lbl { font-family: var(--mono); font-size: 12px; color: var(--moss-light); text-transform: uppercase; margin-top: 6px; font-weight: 700; }
+
+    @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; } }
+
+    /* ---------- ACTIVE FOCUS TRACKS ---------- */
+    .eco-focus {
+      background: linear-gradient(135deg, #ffffff 0%, var(--panel-leaf) 100%);
+      border: 3px solid var(--forest-leaf); padding: 40px;
+      border-radius: var(--radius-organic); margin-bottom: 48px;
+      box-shadow: inset 4px 4px 0px rgba(45, 106, 79, 0.03);
+    }
+    .eco-focus h3 { color: var(--autumn-red); font-size: 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;}
+    .eco-focus ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; list-style: none; }
+    .eco-focus li { color: var(--ink-mist); font-weight: 600; font-size: 16px; display: flex; align-items: flex-start; gap: 12px; }
+    .eco-focus li::before { content: "🌱"; font-size: 16px; margin-top: 2px; }
+
+    /* ---------- THE SKILL GROVE ---------- */
+    .skill-grove { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .skill-branch {
+      background: var(--panel); border: 2px solid var(--line);
+      padding: 32px; border-radius: var(--radius-standard);
+      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.25s;
+    }
+    .skill-branch:hover {
+      border-color: var(--autumn-red);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(217,64,38,0.06);
+    }
+    .skill-branch.highlighted-branch {
+      border: 2px solid var(--forest-leaf);
+      box-shadow: -6px 6px 0px var(--moss-light);
+    }
+    .skill-branch h3 { font-family: var(--mono); font-size: 13px; text-transform: uppercase; color: var(--forest-leaf); margin-bottom: 18px; letter-spacing: 0.05em; }
+    .skill-tags { display: flex; flex-direction: column; gap: 10px; list-style: none; }
+    .skill-tags li { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; color: var(--ink); }
+    .skill-tags li::before { content: ""; width: 6px; height: 6px; background: var(--sun-gold); border-radius: 50%; }
+
+    /* ---------- TIMBER PIPELINE ---------- */
+    .grid-two-col { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; }
+    @media (max-width: 992px) { .grid-two-col { grid-template-columns: 1fr; } }
+
+    .pipeline { display: flex; flex-direction: column; gap: 24px; }
+    .timber-module {
+      background: var(--panel); border: 2px solid var(--line);
+      padding: 32px; border-radius: var(--radius-standard);
+      display: grid; grid-template-columns: 60px 1fr; gap: 24px;
+      transition: all 0.25s ease;
+      position: relative; overflow: hidden;
+    }
+    .timber-module::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 0;
+      background: var(--forest-leaf); transition: width 0.2s ease;
+    }
+    .timber-module:hover {
+      border-color: var(--forest-deep);
+      transform: translateX(8px);
+      box-shadow: -6px 6px 0px var(--moss-light);
+    }
+    .timber-module:hover::before { width: 5px; }
+
+    .module-meta { font-family: var(--mono); font-weight: 700; font-size: 12px; color: var(--ink-mist); }
+    .module-meta .num { font-size: 26px; font-family: var(--display); color: var(--autumn-red); font-weight: 800; display: block; }
+    
+    .module-content h3 { font-size: 21px; color: var(--forest-deep); margin-bottom: 6px; }
+    .module-content .desc { color: var(--ink-mist); font-size: 15px; margin-bottom: 16px; line-height: 1.6; }
+    
+    .canopy-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .c-tag { 
+      font-family: var(--mono); font-size: 11px; font-weight: 700;
+      background: var(--bg-canopy); color: var(--forest-deep);
+      padding: 4px 10px; border-radius: 4px; border: 1px solid var(--line);
+    }
+
+    /* ---------- RINGS TIMELINE ---------- */
+    .rings-timeline { border-left: 3px dashed var(--forest-leaf); padding-left: 32px; display: flex; flex-direction: column; gap: 40px; }
+    .ring-node { position: relative; }
+    .ring-node::before {
+      content: ""; position: absolute; left: -39px; top: 6px;
+      width: 12px; height: 12px; background: var(--sun-gold);
+      border: 3px solid var(--forest-deep); border-radius: 50%;
+    }
+    .ring-date { font-family: var(--mono); font-size: 12px; color: var(--autumn-red); font-weight: 700; text-transform: uppercase; }
+    .ring-node h3 { font-size: 20px; color: var(--forest-deep); margin-top: 6px; }
+    .ring-node .sub { font-size: 14px; color: var(--ink-mist); font-weight: 600; margin-bottom: 8px; }
+    .ring-node p { color: var(--ink-mist); font-size: 15px; line-height: 1.6; }
+    .ring-node ul { margin-left: 18px; margin-top: 8px; color: var(--ink-mist); font-size: 15px; }
+
+    /* ---------- CONTACT PANELS ---------- */
+    .harvest-panel {
+      background: var(--forest-deep); color: #fff;
+      border: 3px solid var(--sun-gold); padding: 56px;
+      border-radius: var(--radius-organic);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      box-shadow: -12px 12px 0px var(--bg-canopy);
+    }
+    .harvest-panel h2 { color: var(--sun-gold); }
+    .harvest-panel p { color: var(--moss-light); font-size: 17px; max-width: 480px; }
+    
+    .harvest-links { display: flex; flex-direction: column; }
+    .harvest-links a {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 0; border-bottom: 1px solid rgba(216, 243, 220, 0.15);
+      font-weight: 600; font-size: 16px; color: #fff; transition: all 0.2s;
+    }
+    .harvest-links a:hover { color: var(--sun-gold); padding-left: 8px; }
+    .harvest-links .glyph { color: var(--autumn-red); font-size: 16px; }
+
+    @media (max-width: 820px) { .harvest-panel { grid-template-columns: 1fr; padding: 36px; } }
+
+    footer { border-top: 2px solid var(--line); padding: 40px 0; font-size: 14px; color: var(--ink-mist); font-family: var(--mono); }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+
+    /* ANIMATION FLAGS */
+    [data-grow] { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s cubic-bezier(0.25, 1, 0.5, 1); }
+    [data-grow].sprouted { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="nav-mark"><span class="seed"></span> AKILESH<span style="color: var(--autumn-red);">.dev</span></div>
+    <button class="nav-toggle" id="navToggle">MENU</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">Roots</a></li>
+      <li><a href="#grove">Skills</a></li>
+      <li><a href="#timber">Projects</a></li>
+      <li><a href="#rings">Chronicles</a></li>
+      <li><a href="#harvest">Contact</a></li>
+    </ul>
+    <a href="#harvest" class="nav-cta">Get in touch</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="canopy-lens-wrapper" id="lens3D">
+      <div class="titleblock" data-grow>
+        <div class="titleblock-main">
+          <div class="eyebrow">AI Full-Stack Developer &amp; Engineering Undergraduate</div>
+          <h1>Akilesh Dhanabalan</h1>
+          <div class="role-container">
+            <span class="highlight-badge">⚡ Highlight: Web Dev</span>
+            <span class="highlight-badge" style="background: linear-gradient(135deg, var(--forest-leaf), #1b4332);">📱 Highlight: Android App Dev</span>
+          </div>
+          <p class="tagline">I engineer full-stack software arrays and intelligent system layers. Specialist in structural <span class="highlight-text-web">Web Application Architectures</span> (React, Node, FastAPI) and native <span class="highlight-text-android">Android Application Components</span>[cite: 2]. Driven by high-performance algorithmic optimization and continuous multi-tier integration[cite: 2].</p>
+          <div class="hero-actions">
+            <a href="#timber" class="btn btn-primary">Explore Code System</a>
+            <a href="#harvest" class="btn btn-ghost">Harvest Connection →</a>
+          </div>
+        </div>
+        <div class="titleblock-strip">
+          <div><div class="k">Ecosystem Focus</div><div class="v">Web &amp; Android Labs</div></div>
+          <div><div class="k">Location Base</div><div class="v">Salem, TN, India[cite: 2]</div></div>
+          <div><div class="k">Active Pipelines</div><div class="v">RAG, REST APIs, UI[cite: 2]</div></div>
+          <div><div class="k">Badges Held</div><div class="v">C++ Gold Badge[cite: 2]</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head" data-grow>
+      <div class="eyebrow">01 — Roots</div>
+      <h2>About My Journey</h2>
+    </div>
+    <div class="about-grid" data-grow>
+      <div>
+        <p>I am a B.Tech Computer Science and Business Systems undergraduate equipped with systematic exposure building AI-driven solutions and production-ready architectures[cite: 2]. My execution pipeline connects optimized backend servers with robust user interfaces[cite: 2].</p>
+        <p>Whether navigating complex database environments, deploying scalable API networks, or writing clean OOP classes, I ensure code maintains deep technical durability under rigorous deployment schedules[cite: 2].</p>
+      </div>
+      <div class="biophilic-stats">
+        <div class="stat-item">
+          <div class="num">80+ Days</div>
+          <div class="lbl">HackerRank 365-Day Target Streak[cite: 2]</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">Multi-Stack</div>
+          <div class="lbl">Python, Java, C++, JavaScript Verified[cite: 2]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="focus">
+  <div class="container">
+    <div class="eco-focus" data-grow>
+      <h3>🌲 Live Active Development Frameworks</h3>
+      <p style="color: var(--ink-mist); font-size: 16px; margin-bottom: 24px;">Current project focus tracks running concurrently with my industrial commitments:</p>
+      <ul>
+        <li><strong>Web Development Track:</strong> Designing responsive, multi-role web architectures utilizing modern React wrappers and decoupled REST API structures[cite: 2].</li>
+        <li><strong>Android Application Track:</strong> Working alongside engineering professionals inside Android Studio to construct stable component behavior patterns[cite: 2].</li>
+        <li><strong>Retrieval Orchestration Labs:</strong> Structuring customized text-and-image pipelines leveraging vector data memory matrices[cite: 2].</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="grove">
+  <div class="container">
+    <div class="section-head" data-grow>
+      <div class="eyebrow">02 — The Grove</div>
+      <h2>Technical Capabilities Matrix</h2>
+    </div>
+    <div class="skill-grove" data-grow>
+      <div class="skill-branch highlighted-branch">
+        <h3>✨ Web Development</h3>
+        <ul class="skill-tags">
+          <li>React Layout Ecosystem[cite: 2]</li>
+          <li>Node.js &amp; Express.js[cite: 2]</li>
+          <li>FastAPI Architecture[cite: 2]</li>
+          <li>Responsive UI/UX Mapping[cite: 2]</li>
+          <li>RESTful API Topologies[cite: 2]</li>
+        </ul>
+      </div>
+      <div class="skill-branch highlighted-branch" style="border-color: var(--sun-gold); box-shadow: -6px 6px 0px rgba(245,176,65,0.15);">
+        <h3>✨ Android App Development</h3>
+        <ul class="skill-tags">
+          <li>Android Studio Environment[cite: 2]</li>
+          <li>Java Software Paradigms[cite: 2]</li>
+          <li>App Component Lifecycle[cite: 2]</li>
+          <li>UI Framework Integration[cite: 2]</li>
+          <li>Device Layout Optimization[cite: 2]</li>
+        </ul>
+      </div>
+      <div class="skill-branch">
+        <h3>AI Orchestration &amp; Tools</h3>
+        <ul class="skill-tags">
+          <li>LangChain Pipelines[cite: 2]</li>
+          <li>ChromaDB Vector Search[cite: 2]</li>
+          <li>Gemini API Systems[cite: 2]</li>
+          <li>MongoDB Atlas &amp; SQLite[cite: 2]</li>
+          <li>Git/GitHub Logic Control[cite: 2]</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="timber">
+  <div class="container">
+    <div class="grid-two-col">
+      
+      <div>
+        <div class="section-head" data-grow>
+          <div class="eyebrow">03 — Timber</div>
+          <h2>System Deployments</h2>
+        </div>
+        <div class="pipeline" data-grow>
+          <div class="timber-module">
+            <div class="module-meta"><span class="num">01</span>WEB</div>
+            <div class="module-content">
+              <h3>Full-Stack E-Commerce Platform</h3>
+              <p class="desc">Engineered a complete online commerce platform featuring granular role-based endpoint routing, customized administrator control dashboards, and multi-tier transaction management matrices[cite: 2].</p>
+              <div class="canopy-tags"><span class="c-tag">React</span><span class="c-tag">Node.js</span><span class="c-tag">REST API</span><span class="c-tag">Dashboard Architecture</span></div>
+            </div>
+          </div>
+          <div class="timber-module">
+            <div class="num">02</div>
+            <div class="module-content">
+              <h3>Project Echo AI Digital Twin</h3>
+              <p class="desc">Assembled a secure end-to-end RAG architecture presenting structured professor-persona conversational behavior layers, automated testing algorithms, and micro-knowledge indexing tools[cite: 2].</p>
+              <div class="canopy-tags"><span class="c-tag">FastAPI</span><span class="c-tag">ChromaDB</span><span class="c-tag">LangChain</span><span class="c-tag">Ollama</span></div>
+            </div>
+          </div>
+          <div class="timber-module">
+            <div class="num">03</div>
+            <div class="module-content">
+              <h3>Multi-Modal Claim Verification Engine</h3>
+              <p class="desc">Formulated an algorithmic evaluation system parsing combined text arrays and photographic evidence simultaneously under fixed competition time bounds[cite: 2].</p>
+              <div class="canopy-tags"><span class="c-tag">Gemini API</span><span class="c-tag">Multi-Modal</span><span class="c-tag">Python Processing</span></div>
+            </div>
+          </div>
+          <div class="timber-module">
+            <div class="module-meta"><span class="num">04</span>APP</div>
+            <div class="module-content">
+              <h3>Desktop Inventory Management Array</h3>
+              <p class="desc">Designed a local commercial terminal matching high-level engineering blueprints. Integrates user verification layers, tabular spreadsheet connectivity, and visual telemetry graphing[cite: 2].</p>
+              <div class="canopy-tags"><span class="c-tag">CustomTkinter</span><span class="c-tag">SQLite</span><span class="c-tag">Matplotlib</span><span class="c-tag">Excel Integration</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-head" data-grow>
+          <div class="eyebrow">04 — Seals</div>
+          <h2>Achievements &amp; Credentials</h2>
+        </div>
+        <div class="pipeline" data-grow>
+          <div class="timber-module">
+            <div class="num">⭐</div>
+            <div class="module-content">
+              <h3>HackerRank C++ Gold Badge</h3>
+              <p class="desc">Acquired through persistent problem-solving, structural algorithm design, and systematic logic checking[cite: 2].</p>
+            </div>
+          </div>
+          <div class="timber-module">
+            <div class="num">🏆</div>
+            <div class="module-content">
+              <h3>IAMNEO Best Performer</h3>
+              <p class="desc">Awarded top honors for exceptional speed and diagnostic resolution accuracy in functional C language testing environments[cite: 2].</p>
+            </div>
+          </div>
+          <div class="timber-module">
+            <div class="num">🛡️</div>
+            <div class="module-content">
+              <h3>Cisco Python Essentials 1</h3>
+              <p class="desc">Verified verification path tracking structured parsing scripts, function blocks, and foundational automation arrays[cite: 2].</p>
+            </div>
+          </div>
+          <div class="timber-module">
+            <div class="num">💡</div>
+            <div class="module-content">
+              <h3>CSBS TechTalk First Place</h3>
+              <p class="desc">Secured champion honors for presenting complex engineering solutions cleanly to technical validation panels[cite: 2].</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="rings">
+  <div class="container">
+    <div class="grid-two-col">
+      
+      <div>
+        <div class="section-head" data-grow>
+          <div class="eyebrow">05 — Chronicles</div>
+          <h2>Professional Experience</h2>
+        </div>
+        <div class="rings-timeline" data-grow>
+          <div class="ring-node">
+            <div class="ring-date">Jan 2026 - Present[cite: 2]</div>
+            <h3>GenAI App Development Builder (Part-time)[cite: 2]</h3>
+            <div class="sub">Independent Startup Collaboration[cite: 2]</div>
+            <p>Constructing scalable web pipelines, testing AI capabilities, and engineering an orchestration-based personal assistant tool[cite: 2].</p>
+          </div>
+          <div class="ring-node">
+            <div class="ring-date">Dec 2025 - Present[cite: 2]</div>
+            <h3>Web Development Intern</h3>
+            <div class="sub">Thiranex Internship Track[cite: 2]</div>
+            <p>Deployed high-performance e-commerce arrays and secure portfolios[cite: 2]. Diagnosed and resolved subtle database runtime failures by rewriting network parameters and addressing encryption character blocks[cite: 2].</p>
+          </div>
+          <div class="ring-node">
+            <div class="ring-date">Dec 2025 - Jan 2026[cite: 2]</div>
+            <h3>Web Development Intern (Freelance Setup)[cite: 2]</h3>
+            <div class="sub">Interface Performance Calibration[cite: 2]</div>
+            <p>Built highly responsive interfaces, refined application loading speeds, and applied highly maintainable design methodologies[cite: 2].</p>
+          </div>
+          <div class="ring-node">
+            <div class="ring-date">Aug 2024[cite: 2]</div>
+            <h3>Java Programming Intern</h3>
+            <div class="sub">Core OOP Application Matrix[cite: 2]</div>
+            <p>Practiced encapsulation design patterns, applied detailed exception catching frameworks, and debugged modular tasks inside agile workflows[cite: 2].</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-head" data-grow>
+          <div class="eyebrow">06 — History</div>
+          <h2>Education &amp; Live Labs</h2>
+        </div>
+        <div class="rings-timeline" data-grow>
+          <div class="ring-node">
+            <div class="ring-date">Concurrent Development Track</div>
+            <h3>Android Application Development Lab</h3>
+            <div class="sub">Collaborative Native Space[cite: 2]</div>
+            <p>Working actively alongside experienced engineering teams on an Android Studio system framework to deploy native component structures[cite: 2].</p>
+          </div>
+          <div class="ring-node">
+            <div class="ring-date">Feb 2026 - Present[cite: 2]</div>
+            <h3>Tech Trio Professional Course</h3>
+            <div class="sub">Cybernaut Edtech Intensive Block[cite: 2]</div>
+            <p>Mastering core programmatic architectures across Java and C++, while systematically competing in high-intensity problem tasks daily[cite: 2].</p>
+          </div>
+          <div class="ring-node">
+            <div class="ring-date">2024 - 2028[cite: 2]</div>
+            <h3>B.Tech — Computer Science &amp; Business Systems</h3>
+            <div class="sub">Knowledge Institute of Technology[cite: 2]</div>
+            <p>A specialized engineering track merging core software engineering metrics, systemic data tracking, and business optimization structures[cite: 2].</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="harvest">
+  <div class="container">
+    <div class="harvest-panel" data-grow>
+      <div>
+        <div class="eyebrow" style="color: var(--sun-gold);">07 — Harvest</div>
+        <h2 style="margin-top: 14px; margin-bottom: 20px;">Secure Connection</h2>
+        <p>Open for collaborative production contracts involving full-stack web platforms, optimized database arrays, or native Android system deployments[cite: 2]. Let's link.</p>
+      </div>
+      <div class="harvest-links">
+        <a href="mailto:dakilesh2006@gmail.com"><span>✉️ dakilesh2006@gmail.com[cite: 2]</span> <span class="glyph">→</span></a>
+        <a href="https://www.linkedin.com/in/akilesh-dhanabalan-5a7575258" target="_blank" rel="noopener"><span>🌲 LinkedIn Engine Network</span> <span class="glyph">→</span></a>
+        <a href="https://github.com/Akilesh-techie47" target="_blank" rel="noopener"><span>🛠️ GitHub Repositories</span> <span class="glyph">→</span></a>
+        <a href="https://wa.me/918015546781" target="_blank" rel="noopener"><span>💬 Secure Comms Channel (+91 8015546781)[cite: 2]</span> <span class="glyph">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-row">
+    <span>© <span id="year"></span> Akilesh Dhanabalan · Salem, Tamil Nadu, India[cite: 2]</span>
+    <span>
+      <a href="mailto:dakilesh2006@gmail.com">Email[cite: 2]</a> ·
+      <a href="https://github.com/Akilesh-techie47" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/akilesh-dhanabalan-5a7575258" target="_blank" rel="noopener">LinkedIn</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile Menu Controls
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  if(navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      if (navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.style.display = 'flex';
+        navLinks.style.flexDirection = 'column';
+        navLinks.style.position = 'absolute';
+        navLinks.style.top = '78px';
+        navLinks.style.left = '0';
+        navLinks.style.right = '0';
+        navLinks.style.background = 'var(--panel)';
+        navLinks.style.padding = '24px';
+        navLinks.style.borderBottom = '2px dashed var(--line)';
+      }
+    });
+  }
+
+  // 3D Inertia Controls
+  const lens = document.getElementById('lens3D');
+  if (window.innerWidth > 992 && lens) {
+    document.addEventListener('mousemove', (e) => {
+      const xAxis = (window.innerWidth / 2 - e.pageX) / 60;
+      const yAxis = (window.innerHeight / 2 - e.pageY) / 60;
+      lens.style.transform = `rotateY(${xAxis}deg) rotateX(${-yAxis}deg)`;
+    });
+    document.addEventListener('mouseleave', () => {
+      lens.style.transition = 'transform 0.4s ease';
+      lens.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+    document.addEventListener('mouseenter', () => {
+      lens.style.transition = 'none';
+    });
+  }
+
+  // Scroll Intersector
+  const elementsToGrow = document.querySelectorAll('[data-grow]');
+  if('IntersectionObserver' in window){
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('sprouted');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    elementsToGrow.forEach(el => observer.observe(el));
+  } else {
+    elementsToGrow.forEach(el => el.classList.add('sprouted'));
+  }
+</script>
+
+</body>
+</html>
